@@ -1,0 +1,161 @@
+/* Regras para dispositivos mobile */
+@media (max-width: 480px) {
+	/* Barra de menus */
+	#barra_menus button.navbar-toggle{
+		margin: 0;
+		padding: 10px 5px;
+		width: 100%;
+		height: 50px;
+	}
+	#barra_menus button.navbar-toggle span.icon-bar{
+		width: 25px;
+		height: 4px;
+	}
+	#barra_menus button.navbar-toggle span.texto{
+		position: absolute;
+		top: 15px;
+		left: 40px;
+		font-weight: bold;
+		color: #666;
+	}
+	#barra_menus button.navbar-toggle span.caret{
+		position: absolute;
+		top: 20px;
+		right: 5px;
+	}
+	#barra_menus .navbar-collapse{
+		padding: 0 15px;
+	}
+	#barra_menus ul.itens ul.dropdown-menu{
+		box-shadow: none;
+	}
+	#barra_menus ul.itens ul.dropdown-menu>li>a{
+		padding: 5px 25px;
+	}
+	#barra_menus ul.itens li{
+		border-bottom: 1px solid lightgray;
+	}
+	/* Corpo */
+	#corpo{
+		padding: 0;
+		width: 100%;
+		box-shadow: none;
+		border: 0;
+	}
+	#corpo div.row{
+		margin-right: 0;
+	}
+	#corpo .row>div[class^='col']{
+		padding-right: 0;
+	}
+	/* Rodapé */
+	#rodape div.container{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#rodape p.copyright{
+		font-size: 11px;
+	}
+	/* Formulário da página de login */
+	#formLogin{
+		margin: 0 10px !important;
+	}
+	/* Tabelas de listagem */
+	table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before{
+		top: 35%;
+	}
+	/* Campos de arquivo instanciados pelo componente FileUploader */
+	.conteiner_arquivo .nome>span.valor{
+		width: 100px;
+	}
+	/* Campos de calendário instanciados pelo componente Bootstrap Datepicker */
+	div.datepicker-days>table>tbody td.day{
+		min-width: 37.5px;
+	}
+	/* Fieldsets (gerados a partir do componente "Panel", do Bootstrap) */
+	.caixa, .caixa_media, .caixa_grande{
+		width: 95%;
+	}
+	/* Botões backlink */
+	div.backlink{
+		width: 98%;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+	div.backlink>div{
+		padding: 0 !important;
+	}
+	div.backlink>div:first-child .btn{
+		border-radius: 3px 3px 0 0 !important;
+	}
+	div.backlink>div:last-child .btn{
+		border-radius: 0 0 3px 3px !important;
+	}
+	/* Layout de formularios */
+	.form div.aviso_vermelho{
+		width: 100%;
+	}
+	.form div.aviso_vermelho>ul{
+		width: auto;
+	}
+	/* Campos de formulário */
+	.form-group label{
+		font-size: 14px;
+		display: block;
+		text-align: left;
+	}
+	.conteiner_calendario.intervalo_aberto input[type='text']{
+		width: 100%;
+	}
+	/* Janelas modais */
+	.janela_modal .modal-dialog{
+		width: 95%;
+		min-width: 0;
+		max-width: none;
+	}
+	/* Ações mobile */
+	ul.acoes_mobile{
+		margin: 0;
+		padding: 0;
+	}
+	ul.acoes_mobile>li.dropdown-header{
+		padding: 3px 0;
+		font-size: 13px;
+		font-weight: bold;
+		color: white;
+		text-shadow: 0px 1px 0px rgba(0,0,0,0.7);
+		text-align: center;
+		background: rgb(90, 125, 85);
+	}
+	ul.acoes_mobile>li.divider{
+		margin: 0;
+	}
+	ul.acoes_mobile>li>a{
+		padding: 10px 3px;
+		border: 1px solid transparent;
+		border-bottom-color: rgba(0, 0, 0, 0.14902);
+	}
+	ul.acoes_mobile>li:last-child>a{
+		border-bottom-color: transparent;
+	}
+	ul.acoes_mobile>li>a:hover, ul.acoes_mobile>li>a:focus{
+		border: 1px solid #aaa;
+		background-color: #5A7D55;
+		color: white;
+		text-shadow: 0px 1px 0px black;
+	}
+	ul.acoes_mobile>li>a>img{
+		margin-left: 3px;
+		margin-right: 3px;
+	}
+	/* Imagem da página inicial do sistema */
+	div.imagem_central>img{
+		width: 100%;
+	}   
+	.radio{
+		display: table;
+	}
+	.radio:not(.first){
+		margin-left: 0px;
+	}
+}
