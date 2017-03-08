@@ -894,11 +894,20 @@ tabela.estilizarAcao = function(acao, dispositivo, onclick, temPaginaAjax){
 	var $conteiner_dropdown = $acao_estilizada.siblings('ul');
 	if(dispositivo == 'xs'){
 		var titulo = $acao_estilizada.attr('title');
-		var caminho_imagem = $acao_estilizada.children('img').attr('src');
+		var $icone = $acao_estilizada.children('i');
+		var cor_acao;
+		if($acao_estilizada.hasClass('btn-success')){
+			cor_acao = 'mobile-success';
+		} else if($acao_estilizada.hasClass('btn-primary')){
+			cor_acao = 'mobile-primary';
+		} else if($acao_estilizada.hasClass('btn-danger')){
+			cor_acao = 'mobile-danger';
+		} else {
+			cor_acao = 'mobile-default';
+		}
+		
 		var $li = $('<li />').append(
-			$("<a />").attr('href', '#').prepend(
-				$('<img />', {'src': caminho_imagem, 'alt': titulo}).addClass('alinhadoVertical')
-			).append(
+			$("<a />").attr('href', '#').addClass(cor_acao).prepend($icone).append(
 				$('<span />').addClass('alinhadoVertical').html(titulo)
 			)
 		);
