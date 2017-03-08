@@ -1,5 +1,5 @@
 <?php
-class usuarioDao extends abstractDao {
+class plataformaDao extends abstractDao {
 
 	protected $campos = array(
 		'nome' => array('tipo' => 'texto', 'obrigatorio' => true),

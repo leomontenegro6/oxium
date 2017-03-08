@@ -390,8 +390,8 @@ fileUploader.mostrarArquivosExistentes = function(campo){
 		"id": id_tr+"_remover",
 		"title": "Remover arquivo",
 		'tabindex': '0'
-	}).addClass('btn btn-default remover_arquivo').html(
-		$("<img />", {"src": "../common/icones/cross.png", "alt": "Remover"})
+	}).addClass('btn btn-danger remover_arquivo').html(
+		$("<i />").addClass('fa fa-trash fa-lg')
 	);
 	
 	var $tr_arquivo = $("<tr />", {"id": id_tr}).addClass("arquivo_valido fadein").append(
@@ -532,8 +532,8 @@ fileUploader.processarArquivo = function(campo){
 						'id': id_tr + "_remover",
 						'title': "Remover arquivo",
 						'tabindex': '0'
-					}).addClass('btn btn-default remover_arquivo').html(
-						$("<img />", {"src": "../common/icones/cross.png", "alt": "Remover"})
+					}).addClass('btn btn-danger remover_arquivo').html(
+						$("<i />").addClass('fa fa-trash fa-lg')
 					)
 				)
 			)

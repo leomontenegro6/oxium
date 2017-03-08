@@ -4,7 +4,7 @@ class jogoDao extends abstractDao {
 	protected $campos = array(
 		'nome' => array('tipo' => 'texto', 'obrigatorio' => true),
 		'sigla' => array('tipo' => 'texto', 'obrigatorio' => true, 'unico'=>true),
-		'icone' => array('tipo' => 'texto', 'obrigatorio' => true, 'normalizar'=>false),
+		'icone' => array('tipo' => 'texto', 'normalizar'=>false),
 		'plataforma' => array('tipo' => 'inteiro')
 	);		
 	

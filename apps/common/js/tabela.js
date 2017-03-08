@@ -631,9 +631,6 @@ tabela.instanciar = function(seletor_tabela, escopo){
 						});
 					}
 				}
-			} else {
-				$conteiner_tabela.addClass('oculta');
-				//jAlert('Nenhum registro encontrado');
 			}
 
 			// Exibindo totais no rodapé da tabela, se tiver página Ajax
@@ -789,16 +786,11 @@ tabela.atualizar = function(seletor_tabela){
 		if(temPaginaAjax){
 			$conteiner_tabela.attr('data-atualizacao-programatica', 'true');
 			objeto_tabela.ajax.reload(function(){
-				var info_paginacao = objeto_tabela.page.info();
-				var total_consulta = info_paginacao.recordsDisplay;
-				var temResultados = (total_consulta > 0);
+				//var info_paginacao = objeto_tabela.page.info();
+				//var total_consulta = info_paginacao.recordsDisplay;
+				//var temResultados = (total_consulta > 0);
 				
 				$conteiner_tabela.removeAttr('data-atualizacao-programatica');
-				if(temResultados){
-					$conteiner_tabela.removeClass('oculta');
-				} else {
-					$conteiner_tabela.addClass('oculta');
-				}
 			}, false);
 		} else {
 			var ordenacao, filtragem;

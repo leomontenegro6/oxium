@@ -434,7 +434,7 @@ abstract class abstractBusiness {
 			$operador_atrib = 'IS';
 		}
 		elseif($tipo == 'texto') {
-			$operador_atrib = 'ILIKE';
+			$operador_atrib = 'LIKE';
 		}
 		
 		$retorno;

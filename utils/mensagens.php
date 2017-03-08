@@ -277,7 +277,7 @@ class mensagens{
 		$quebra_nome = explode(".", $nome_completo);
 		$posicao_extensao = count($quebra_nome) - 1;
 		$extensao = $quebra_nome[$posicao_extensao];
-		return $extensao;
+		return self::lower($extensao);
 	}
 	
 	public static function renomearArquivo($nome,$extensao){
@@ -301,6 +301,28 @@ class mensagens{
 				unlink($nome_arquivo);
 			}
 		}
+	}
+	
+	public static function removerEspacos($variavel){
+		if (is_array($variavel)) {
+			foreach($variavel as $i => $v) {
+				$variavel[$i] = trim($variavel[$i]);
+				$variavel[$i] = preg_replace('/\s(?=\s)/', '', $variavel[$i]);
+			}
+		}
+		else {
+			$variavel = trim($variavel);//remove espaços no início e fim da palavra
+			$variavel = preg_replace('/\s(?=\s)/', '', $variavel);//remove múltiplos espaços entre palavras da variável
+		}
+			
+		return $variavel;
+	}
+	
+	public static function formataSigla($sigla){
+		$sigla = self::normalize($sigla);
+		$sigla = self::removerEspacos($sigla);
+		$sigla = self::lower($sigla);
+		return $sigla;
 	}
 	
 	/*
