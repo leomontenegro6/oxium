@@ -397,6 +397,14 @@ select.instanciar = function(seletor_campo, escopo){
 			})
 		}
 		
+		// Adicionando suporte a atributo "autofocus"
+		if($select.is('[autofocus]')){
+			$select.removeAttr('autofocus');
+			setTimeout(function(){
+				select.setarFoco($select);
+			}, 25);
+		}
+		
 		// Inserir atributo que impede desta função atuar sobre o campo select
 		// duas vezes, de modo a evitar bugs.
 		$select.attr('data-instanciado', 'true');

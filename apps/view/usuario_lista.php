@@ -15,7 +15,7 @@ $login_lista = (isset($_GET['login_lista'])) ? ($_GET['login_lista']) : ('');
 				<div class="form-group">
 					<label for="login_lista" class="col-sm-2 col-sm-offset-2 control-label"><i>Login</i>:</label>
 					<div class="col-sm-6">
-						<input type="text" id="login_lista" name="login_lista" class="form-control" value="<?php echo $login_lista ?>" />
+						<input type="text" id="login_lista" name="login_lista" class="form-control" autofocus value="<?php echo $login_lista ?>" />
 					</div>
 				</div>
 				

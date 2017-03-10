@@ -42,7 +42,7 @@ $plataforma_rs = $plataforma->getAll();
 				<div class="form-group">
 					<label for="nome" class="col-sm-3 control-label">Nome*:</label>
 					<div class="col-sm-7">
-						<input type="text" id="nome" name="nome" class="form-control" required value="<?php echo $nome ?>" />
+						<input type="text" id="nome" name="nome" class="form-control" required autofocus value="<?php echo $nome ?>" />
 					</div>
 				</div>
 				<div class="form-group">

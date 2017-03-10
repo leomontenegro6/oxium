@@ -28,7 +28,7 @@ $checkUsuarioAtual = ($id == $iduser);
 			<div class="form-group">
 				<label for="nome" class="col-sm-3 col-sm-offset-1 control-label">Nome Completo*:</label>
 				<div class="col-sm-6">
-					<input type="text" id="nome" name="nome" class="form-control" required value="<?php echo $nome ?>" />
+					<input type="text" id="nome" name="nome" class="form-control" required autofocus value="<?php echo $nome ?>" />
 				</div>
 			</div>
 			<div class="form-group">

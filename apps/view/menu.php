@@ -1,9 +1,5 @@
 <?php if($ajax === false){ ?>
 	<body id="pagina">
-		<?php // Precacheando gif do AjaxLoadingWheel para evitar que a tela de carregamento deixe de exibir a imagem por ter que carregá-la ?>
-		<div class="precache">
-			<img src="../common/images/processando_fundo.gif" />
-		</div>
 		
 		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">

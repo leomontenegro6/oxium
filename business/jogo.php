@@ -5,6 +5,39 @@ class jogo extends abstractBusiness {
 		return $this->getByParameter("ORDER BY nome");
 	}
 	
+	public function getDescricao($id){
+		$jogo_rs = $this->getFieldsByParameter("p.sigla AS plataforma, j.nome, j.id", "j
+				LEFT JOIN plataformas p ON (j.plataforma = p.id)
+			WHERE j.id = $id
+			LIMIT 1");
+		if(count($jogo_rs) > 0){
+			$jogo_row = $jogo_rs[0];
+			$plataforma = $jogo_row['plataforma'];
+			$nome = $jogo_row['nome'];
+			
+			if(!empty($plataforma)){
+				return "[$plataforma] $nome";
+			} else {
+				return $nome;
+			}
+		} else {
+			return '';
+		}
+	}
+	
+	public function getForSelect(){
+		$jogo_rs = $this->getFieldsByParameter("p.sigla AS plataforma, j.nome, j.icone, j.id", "j
+				LEFT JOIN plataformas p ON (j.plataforma = p.id)
+			ORDER BY p.sigla, j.nome");
+		foreach($jogo_rs as $i=>$jogo_row){
+			$plataforma = $jogo_row['plataforma'];
+			$nome = $jogo_row['nome'];
+			
+			$jogo_rs[$i]['descricao'] = "[$plataforma] $nome";
+		}
+		return $jogo_rs;
+	}
+	
 	private function formataSQLByListagem($nome, $id_plataforma){
 		$array_sql = array(
 			'sql'=>'TRUE',

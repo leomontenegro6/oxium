@@ -1,2 +1,3 @@
 /persistence/dbconfig.php
+/apps/view/arquivos/*
 !/apps/view/arquivos/*.php
