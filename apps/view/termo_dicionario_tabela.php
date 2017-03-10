@@ -35,7 +35,6 @@ if(isset($_GET['montar_tabela']) && $_GET['montar_tabela'] === true){
 		<table>
 			<thead>
 				<tr>
-                    <th>Jogo</th>
 					<th>Termo Original</th>
 					<th>Termo Traduzido</th>
 					<th width="110" class="acoes">Ações</th>
@@ -44,12 +43,12 @@ if(isset($_GET['montar_tabela']) && $_GET['montar_tabela'] === true){
 			<tbody></tbody>
 			<tfoot>
 				<tr>
-					<th colspan="4">Total de termos de dicionário para este jogo: <span class="total_consulta"></span></th>
+					<th colspan="3">Total de termos de dicionário para este jogo: <span class="total_consulta"></span></th>
 				</tr>
 			</tfoot>
 		</table>
 		<div class="acoes">
-			<button type="button" title="Editar" data-onclick="jForm('termo_dicionario_form.php', 'id={id}&jogo={id_jogo}')">
+			<button type="button" title="Editar" data-onclick="jForm('termo_dicionario_form.php', 'id={id}')">
 				<i class="fa fa-edit fa-lg"></i>
 			</button>
 			<button type="button" title="Excluir" data-onclick="apagaRegistro('termo_dicionario_crud.php', {id}, 'Excluir este termo de dicionário?', true)" class="btn btn-danger">
@@ -89,7 +88,7 @@ if(isset($_GET['montar_tabela']) && $_GET['montar_tabela'] === true){
 	$termoDicionario_rs = $termoDicionario->getByListagem($jogo_lista, $termo_original_lista, $ordenacao, $filtragem, $limit, $offset);
 
 	// Colunas da tabela a serem retornadas via array para o componente (para ações)
-	$dados_coluna = array('id', 'id_jogo');
+	$dados_coluna = array('id');
 
 	// Formatação dos dados da pesquisa na tabela, para o formato do componente
 	$dados_tabela = tabela::formatarDadosTabela($termoDicionario_rs, $colunas, $dados_coluna);

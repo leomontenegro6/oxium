@@ -5,22 +5,23 @@ require_once("cabecalho.php");
 $termoDicionario = new termoDicionario();
 $jogo = new jogo();
 
-if(!isset($_POST['jogo'])){
-	modal::notificar('Jogo não fornecido!', 'aviso', $ajax);
-	exit;
-}
-
-$id_jogo = $_POST['jogo'];
-
 if( isset($_POST['id']) ){
 	$acao = "editar";
 	$id = $_POST['id'];
 	$termoDicionario_row = $termoDicionario->get($id);
 	
+	$id_jogo = $termoDicionario_row['jogo'];
 	$termo_original = $termoDicionario_row['termo_original'];
 	$termo_traduzido = $termoDicionario_row['termo_traduzido'];
 } else {
 	$acao = 'cadastrar';
+	
+	if(!isset($_POST['jogo'])){
+		modal::notificar('Jogo não fornecido!', 'aviso', $ajax);
+		exit;
+	}
+	
+	$id_jogo = $_POST['jogo'];
 	$id = $termo_original = $termo_traduzido = '';
 }
 
@@ -34,7 +35,7 @@ $descricao_jogo = $jogo->getDescricao($id_jogo);
 		<div class="panel-body form">
 
 			<div class="form-group">
-				<label for="jogo" class="col-sm-2 col-sm-offset-2 control-label">Jogo*:</label>
+				<label for="jogo" class="col-sm-2 col-sm-offset-2 control-label">Jogo:</label>
 				<div class="col-sm-6"><?php echo $descricao_jogo ?></div>
 			</div>
 			<div class="form-group">
