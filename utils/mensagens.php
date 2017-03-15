@@ -325,6 +325,34 @@ class mensagens{
 		return $sigla;
 	}
 	
+	public static function checaCorValida($cor, $temHashtag=true){
+		if($temHashtag){
+			return (preg_match('/^#[a-f0-9]{6}$/i', $cor));
+		} else {
+			return (preg_match('/^[a-f0-9]{6}$/i', $cor));
+		}
+	}
+	
+	public static function converteCorHexadecimalParaDecimal($cor){
+		list($r, $g, $b) = sscanf($cor, "#%02x%02x%02x");
+		return array($r, $g, $b);
+	}
+	
+	public static function removerArquivos($arquivos){
+		if(is_array($arquivos)){
+			foreach($arquivos as $arquivo){
+				if(file_exists($arquivo)){
+					unlink($arquivo);
+				}
+			}
+		} elseif(is_string($arquivos)){
+			if(file_exists($arquivos)){
+				unlink($arquivos);
+			}
+		}
+		return true;
+	}
+	
 	/*
 	 * Função que retorna o ambiente em que o sistema está sendo executado.
 	 */

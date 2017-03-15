@@ -58,6 +58,8 @@ if(!$ajax){
 		<link rel="stylesheet" href="../common/css/awesome-bootstrap-checkbox.css">
 		<?php // jQuery Bootstrap Touchspin, para campos de texto com spinner ?>
 		<link rel="stylesheet" href="../common/css/jquery.bootstrap-touchspin.css">
+		<?php // Bootstrap Colorpicker, para campos de seleção de cores ?>
+		<link rel="stylesheet" href="../common/css/bootstrap-colorpicker.min.css">
 		
 		<?php // Arquivos CSS padrões do sistema ?>
 		<link rel="stylesheet" href="../common/css/layout.css?<?php echo filemtime('../common/css/layout.css') ?>">
@@ -87,6 +89,8 @@ if(!$ajax){
 		<script src="../common/js/bootstrap-datetimepicker.min.js"></script>
 		<?php // jQuery Bootstrap Touchspin, para campos de texto com spinner ?>
 		<script src="../common/js/jquery.bootstrap-touchspin.js"></script>
+		<?php // Bootstrap Colorpicker, para campos de seleção de cores ?>
+		<script src="../common/js/bootstrap-colorpicker.min.js"></script>
 		<?php // jQuery Mask, para aplicar máscaras em campos de formulário ?>
 		<script src="../common/js/jquery.mask.min.js"></script>
 		
@@ -100,6 +104,7 @@ if(!$ajax){
 		<script src="../common/js/calendario.js?<?php echo filemtime('../common/js/calendario.js') ?>"></script>
 		<script src="../common/js/fileUploader.js?<?php echo filemtime('../common/js/fileUploader.js') ?>"></script>
 		<script src="../common/js/spinner.js?<?php echo filemtime('../common/js/spinner.js') ?>"></script>
+		<script src="../common/js/colorpicker.js?<?php echo filemtime('../common/js/colorpicker.js') ?>"></script>
 		<script src="../common/js/campoMultiplo.js?<?php echo filemtime('../common/js/campoMultiplo.js') ?>"></script>
 		<script type="text/javascript">
 			var data_servidor = new Date(<?php echo strtotime('now') * 1000 ?>);

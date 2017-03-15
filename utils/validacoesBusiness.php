@@ -119,6 +119,22 @@ class validacoesBusiness {
 		} else {
 			return 'O valor deve ser maior que zero e menor ou igual a 100!';
 		}
-	}	
+	}
+	
+	// Validação de campos de tipo 'cor'
+	static function cor($campo, $valor, $checkObrigatorio) {
+		if($checkObrigatorio) {
+			if(empty($valor)) {
+				return "Campo '$campo' Obrigatório!";
+			}
+		}
+		
+		$checaCorValida = mensagens::checaCorValida($valor);
+		if(!$checaCorValida){
+			return "A cor fornecida para o campo '$campo' é inválida!";
+		}
+		
+		return true;
+	}
 	
 }

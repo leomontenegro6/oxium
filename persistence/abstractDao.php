@@ -16,6 +16,7 @@ abstract class abstractDao{
 		'tipos'			=> array(
 			'inteiro'		=> array('int', 'integer'),
 			'texto'			=> array('text', 'string'),
+			'cor'			=> array('color', 'colour'),
 			'booleano'		=> array('bool', 'boolean'),
 			'data'			=> array('date'),
 			'decimal'		=> array('float', 'double'),

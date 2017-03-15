@@ -232,7 +232,7 @@ class jogo extends abstractBusiness {
 			$retorno = parent::update($post, $id);
 			if($retorno){
 				// Removendo ícone antigo da pasta "arquivos/"
-				$this->removerArquivoIcone($icone_antigo);
+				mensagens::removerArquivos($icone_antigo);
 				
 				return true;
 			} else {
@@ -250,7 +250,7 @@ class jogo extends abstractBusiness {
 		if($commit){
 			$retorno = parent::delete($id, $commit);
 			if($retorno){
-				$this->removerArquivoIcone($icone);
+				mensagens::removerArquivos($icone);
 				
 				return true;
 			} else {
@@ -258,14 +258,6 @@ class jogo extends abstractBusiness {
 			}
 		} else {
 			return parent::delete($id, $commit, false);
-		}
-	}
-	
-	public function removerArquivoIcone($icone){
-		if(file_exists($icone)){
-			return unlink($icone);
-		} else {
-			return true;
 		}
 	}
 	

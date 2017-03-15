@@ -325,7 +325,7 @@ class database {
 		if($tipo === 'booleano') {
 			return PDO::PARAM_BOOL;
 		}
-		elseif($tipo === 'texto' || $tipo === 'data') {
+		elseif($tipo === 'texto' || $tipo === 'data' || $tipo === 'cor') {
 			return PDO::PARAM_STR;
 		}
 		

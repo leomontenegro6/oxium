@@ -835,6 +835,7 @@ function instanciarComponentes(campo, escopo){
 	calendario.instanciar(campo, escopo);
 	fileUploader.instanciar(campo, escopo);
 	spinner.instanciar(campo, escopo);
+	colorpicker.instanciar(campo, escopo);
 	aba.instanciar(campo, escopo);
 }
 
@@ -944,4 +945,85 @@ function mostrarConsultasSessao(){
 	obterConsultasSessao(function(r){
 		jAlert(r);
 	})
+}
+
+function dec2hex(d) {
+    var s = "00" + Number(d).toString(16);
+    return s.substring(s.length - 2);
+}
+
+function instanciarContaGotas(id_input_file, id_canvas, callback){
+	var $inputFile = $('#' + id_input_file);
+	var $canvas = $('#' + id_canvas);
+	var $imagemThumbnail = $inputFile.closest('div.fileuploader').find('img.thumbnail').first();
+	
+	var contexto = $canvas[0].getContext('2d');
+	var imagem = new Image;
+	imagem.onload = function() {
+		var largura = imagem.width;
+		var altura = imagem.height;
+		
+		$canvas.attr({
+			'width': largura,
+			'height': altura
+		}).show();
+		contexto.drawImage(imagem, 0, 0, largura, altura);
+		
+		pixel = function(e) {
+			// Encontrando a posição do elemento
+			var x = 0;
+			var y = 0;
+			var o = $canvas[0];
+			do {
+				x += o.offsetLeft;
+				y += o.offsetTop;
+			} while (o = o.offsetParent);
+
+			x = e.pageX - x - 10; // largura da borda
+			y = e.pageY - y - 10; // largura da borda
+			var imagesdata = contexto.getImageData( x, y, 1, 1 );
+			var vermelho = imagesdata.data[0];
+			var verde = imagesdata.data[1];
+			var azul = imagesdata.data[2];
+			var canal_alfa = imagesdata.data[3];
+			
+			var new_color = [ vermelho, verde, azul ];
+			$canvas[0].style.borderColor = "rgb("+new_color+")";
+			
+			if(callback) callback(vermelho, verde, azul, canal_alfa);
+		}
+		
+		$canvas.on({
+			'mousedown.contagotas': function(){
+				$canvas[0].onmousemove = pixel; // fire pixel() while user is dragging
+				$canvas[0].onclick = pixel; // only so it will still fire if user doesn't drag at all
+			},
+			'mouseup.contagotas': function(){
+				$canvas[0].onmousemove = null;
+			}
+		})
+	}
+	imagem.src = $imagemThumbnail.attr('src');
+}
+
+function atualizarCorChaveCRUDFontes(vermelho, verde, azul, canal_alfa){
+	var $campoCorChave = $('#cor_chave');
+	if(canal_alfa == 255){
+		var cor = '#' + dec2hex(vermelho) + dec2hex(verde) + dec2hex(azul);
+		colorpicker.setarValor($campoCorChave, cor);
+	} else {
+		colorpicker.setarValor($campoCorChave, '');
+	}
+}
+
+function toggleCamposCoresCRUDFontes(exibir){
+	exibir = ((typeof exibir != 'undefined') && (exibir == true));
+	var $campoCorChave = $('#cor_chave');
+	var $divsCamposCores = $('div.campos_cores');
+	if(exibir){
+		$divsCamposCores.show();
+	} else {
+		$divsCamposCores.hide();
+		colorpicker.setarValor($campoCorChave, '');
+	}
 }

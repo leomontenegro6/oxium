@@ -100,12 +100,12 @@ class formatacoesBusiness {
 		return "$ano-$mes-$dia{$hora}";
 	}	
 	
-	static function cepSet($valor) {
-		
-		if(is_string($valor)) {
-			$valor = str_replace('-', '', $valor);
+	// Formatação de campos de tipo 'cor'
+	static function corSet($valor) {
+		if((trim($valor) == '') || ($valor == "NULL") || ($valor == NULL)){
+			return 'NULL';
+		} else {
+			return str_replace('#', '', $valor);
 		}
-		
-		return $valor;
 	}
 }

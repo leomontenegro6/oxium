@@ -308,7 +308,7 @@ fileUploader.criarBarraProgresso = function(valor, rotulo){
 	if(typeof valor == 'undefined') valor = 0;
 	if(typeof rotulo == 'undefined') rotulo = valor + '%';
 	return $("<div />").addClass("progress").html(
-		$("<div />").addClass("progress-bar progress-bar-success").attr({
+		$("<div />").addClass("progress-bar").attr({
 			'role': 'progressbar',
 			'aria-valuenow': valor,
 			'aria-valuemin': '0',

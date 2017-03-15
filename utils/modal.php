@@ -16,10 +16,10 @@ class modal{
 		} else {
 			switch($tipo){
 				case "aviso":
-					echo "<script language='javascript'>$(function(){ jAlert('$texto', 'Aviso', function(){location.href='$retorno';}); })</script>";
+					echo "<script language='javascript'>$(function(){ jAlert(\"$texto\", 'Aviso', function(){location.href='$retorno';}); })</script>";
 					break;
 				case "erro":
-					echo "<script language='javascript'>$(function(){ jError('$texto', 'Erro!', function(){location.href='$retorno';}); })</script>";
+					echo "<script language='javascript'>$(function(){ jError(\"$texto\", 'Erro!', function(){location.href='$retorno';}); })</script>";
 					break;
 				default:
 					// Caso não for especificado o tipo de janela modal, detectar se o texto começa com "Erro ao".
@@ -27,12 +27,12 @@ class modal{
 					if(preg_match("/^Erro/", $texto) || preg_match("/^Já existe um/", $texto) || preg_match("/está sendo usad/", $texto)){
 						$texto = str_replace("Erro ao inserir! \\n", "", $texto);
 						$texto = str_replace("Erro ao atualizar! \\n", "", $texto);
-						echo "<script language='javascript'>$(function(){ jError('$texto', 'Erro!', function(){location.href='$retorno';}); })</script>";
+						echo "<script language='javascript'>$(function(){ jError(\"$texto\", 'Erro!', function(){location.href='$retorno';}); })</script>";
 					} else {
-						echo "<script language='javascript'>$(function(){ jInfo('$texto', 'Informação', function(){location.href='$retorno';}); })</script>";
+						echo "<script language='javascript'>$(function(){ jInfo(\"$texto\", 'Informação', function(){location.href='$retorno';}); })</script>";
 					}
 					break;
-					//echo "<script language='javascript'>$(function(){ jInfo('$texto', 'Informação', function(){location.href='$retorno';}); })</script>";
+					//echo "<script language='javascript'>$(function(){ jInfo(\"$texto\", 'Informação', function(){location.href='$retorno';}); })</script>";
 					//break;
 				}
 		}
@@ -69,13 +69,13 @@ class modal{
 		} else {
 			switch($tipo){
 				case "aviso":
-					echo "<script language='javascript'>$(function(){ jAlert('$texto', 'Aviso'); } ) </script>";
+					echo "<script language='javascript'>$(function(){ jAlert(\"$texto\", 'Aviso'); } ) </script>";
 				break;
 				case "erro":
-					echo "<script language='javascript'>$(function(){ jError('$texto', 'Erro'); } )</script>";
+					echo "<script language='javascript'>$(function(){ jError(\"$texto\", 'Erro'); } )</script>";
 				break;
 				default:
-					echo "<script language='javascript'>$(function(){ jInfo('$texto', 'Informação'); } )</script>";
+					echo "<script language='javascript'>$(function(){ jInfo(\"$texto\", 'Informação'); } )</script>";
 				break;
 			}
 		}

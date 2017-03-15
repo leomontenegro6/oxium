@@ -25,17 +25,18 @@
 			<!--
 			menu.instanciar(
 				[
-					['<i class="fa fa-home fa-lg"></i>', 'Início', 'inicio.php', '_self',null],
-					['<i class="fa fa-table fa-lg"></i>', 'Cadastros', '', '',null,
-						['<i class="fa fa-desktop fa-lg"></i>', 'Plataforma', 'plataforma_lista.php', '_self',null],
-						['<i class="fa fa-gamepad fa-lg"></i>', 'Jogos', 'jogo_lista.php', '_self',null],
-						['<i class="fa fa-book fa-lg"></i>', 'Termos de Dicionário', 'termo_dicionario_lista.php', '_self',null]
+					['<i class="fa fa-home fa-lg"></i>', 'Início', 'inicio.php', '_self', null],
+					['<i class="fa fa-table fa-lg"></i>', 'Cadastros', '', '', null,
+						['<i class="fa fa-desktop fa-lg"></i>', 'Plataforma', 'plataforma_lista.php', '_self', null],
+						['<i class="fa fa-gamepad fa-lg"></i>', 'Jogos', 'jogo_lista.php', '_self', null],
+						['<i class="fa fa-book fa-lg"></i>', 'Termos de Dicionário', 'termo_dicionario_lista.php', '_self', null],
+						['<i class="fa fa-font fa-lg"></i>', 'Fontes', 'fonte_lista.php', '_self', null]
 					],
-					['<i class="fa fa-gears fa-lg"></i>', 'Processos', '', '',null],
-					['<i class="fa fa-wrench fa-lg"></i>', 'Configurações', '', '',null,
-						['<i class="fa fa-users fa-lg"></i>', 'Usuários', 'usuario_lista.php', '_self',null]
+					['<i class="fa fa-gears fa-lg"></i>', 'Processos', '', '', null],
+					['<i class="fa fa-wrench fa-lg"></i>', 'Configurações', '', '', null,
+						['<i class="fa fa-users fa-lg"></i>', 'Usuários', 'usuario_lista.php', '_self', null]
 					],
-					['<i class="fa fa-sign-out fa-lg"></i>', 'Sair', 'logoff.php', '_self',null]
+					['<i class="fa fa-sign-out fa-lg"></i>', 'Sair', 'logoff.php', '_self', null]
 				]
 			);
 			-->
