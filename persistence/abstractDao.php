@@ -195,7 +195,7 @@ abstract class abstractDao{
 	 * @param Array $valores - Vetor com os valores e classes de cada campo.
 	 * @return total ou false em caso de erro.
 	 */
-	function getTotal($parametros, $dados) {
+	function getTotal($parametros='', $dados=array()) {
 		$valores = array();
 		
 		$traducoes_metadados = $this->traducoes;
@@ -295,6 +295,13 @@ abstract class abstractDao{
 	
 	public function commit() {
 		return $this->database->commit();
+	}
+	
+	/** Retorna o id do próximo elemento a ser inserido na tabela.
+	* @return Inteiro $id
+	*/
+	function getNextid() {
+		return $this->database->getAutoincrement($this->dbname, $this->tabela);
 	}
 
 	/** Insere dados em uma tabela.

@@ -1005,6 +1005,9 @@ div.cor{
 .colorpicker.colorpicker-horizontal .colorpicker-alpha{
 	background-image: url(../images/bootstrap-colorpicker/alpha-horizontal.png)
 }
+.colorpicker-component i{
+	border: 1px solid #999;
+}
 /* Estilizações referentes ao componente conta-gotas */
 canvas.conta_gotas{
 	margin: 0 auto;

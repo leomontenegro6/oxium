@@ -1027,3 +1027,102 @@ function toggleCamposCoresCRUDFontes(exibir){
 		colorpicker.setarValor($campoCorChave, '');
 	}
 }
+
+function adicionarBackgroundFonte(campo, tr) {
+	// Obtendo parâmetros dos arquivos enviados no campo
+	var $tr = $(tr);
+	var $botao = $tr.find('button.remover_arquivo');
+	var $tabelaBackgrounds = $('#tabela_backgrounds');
+	var $tbody = $tabelaBackgrounds.children('tbody');
+	
+	var $img = $tr.find('img.thumbnail');
+	var nome_decodificado = $tr.find('div.nome>span.valor').html();
+	var extensao = nome_decodificado.split('.').pop();
+	var acao = $tr.find("input[type='hidden'].acao").val();
+	var caminho = $tr.find("input[type='hidden'].tmp_name").val();
+
+	var iterador = parseInt($tabelaBackgrounds.attr('data-iterador'), 10);
+	iterador++;
+	$tabelaBackgrounds.attr('data-iterador', iterador);
+	
+	var $trBackground = $('<tr />').append(
+		$img.clone().removeAttr('title width').css('maxWidth', '100%')
+	).append(
+		$('<td />').append(
+			$('<input />').attr({
+				'type': 'text',
+				'name': 'background[' + iterador + '][coordenada_x]',
+				'placeholder': 'X'
+			}).addClass('spinner')
+		).append(
+			$('<input />').attr({
+				'type': 'text',
+				'name': 'background[' + iterador + '][coordenada_y]',
+				'placeholder': 'Y'
+			}).addClass('spinner')
+		)
+	).append(
+		$('<td />').addClass('operacao').html('Cadastrar')
+	).append(
+		$('<td />').addClass('acoes').html(
+			$('<button />').addClass('btn btn-danger').attr({
+				'type': 'button',
+				'title': 'Excluir',
+				'onclick': 'excluirBackground(this)'
+			}).html(
+				$('<i />').addClass('fa fa-remove fa-lg')
+			).css('borderRadius', '3px')
+		).append(
+			$('<input />').attr({
+				'type': 'hidden',
+				'name': 'background[' + iterador + '][acao]'
+			}).addClass('acao').val(acao)
+		).append(
+			$('<input />').attr({
+				'type': 'hidden',
+				'name': 'background[' + iterador + '][id]'
+			}).addClass('id').val('')
+		).append(
+			$('<input />').attr({
+				'type': 'hidden',
+				'name': 'background[' + iterador + '][tmp_name]'
+			}).addClass('tmp_name').val(caminho)
+		).append(
+			$('<input />').attr({
+				'type': 'hidden',
+				'name': 'background[' + iterador + '][extension]'
+			}).addClass('extension').val(extensao)
+		)
+	);
+	$tbody.append($trBackground);
+	
+	instanciarComponentes(null, $trBackground);
+
+	$botao.click();
+}
+
+function marcarBackgroundParaExclusao(botao) {
+	var $botao = $(botao);
+	var $tr = $botao.closest('tr');
+	var $inputAcao = $tr.find("input[type='hidden'].acao");
+
+	if ($tr.is("[data-marcado-exclusao='true']")) {
+		$tr.removeAttr('data-marcado-exclusao');
+		$tr.find("input[type='text']").removeAttr('disabled');
+		$tr.children('td.operacao').html('Editar');
+		$inputAcao.val('editar');
+		$botao.attr('title', 'Marcar para exclusão').removeClass('verde').addClass('vermelho');
+		$botao.children('i').removeClass('fa-undo').addClass('fa-remove');
+	} else {
+		$tr.attr('data-marcado-exclusao', 'true');
+		$tr.find("input[type='text']").attr('disabled', 'disabled');
+		$tr.children('td.operacao').html('Excluir');
+		$inputAcao.val('excluir');
+		$botao.attr('title', 'Desfazer').removeClass('vermelho').addClass('verde');
+		$botao.children('i').removeClass('fa-remove').addClass('fa-undo');
+	}
+}
+
+function excluirBackground(botao) {
+	$(botao).closest('tr').remove();
+}

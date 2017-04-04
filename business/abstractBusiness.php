@@ -119,7 +119,7 @@ abstract class abstractBusiness {
 	 * @param Array $valores - Vetor com os valores e classes de cada campo.
 	 * @return total ou false em caso de erro.
 	 */
-	function getTotal($parametros, $valores) {
+	function getTotal($parametros='', $valores=array()) {
 		$total_row = $this->dao->getTotal($parametros, $valores)->fetch(PDO::FETCH_ASSOC);
 		return $total_row['total'];
 	}
@@ -487,6 +487,13 @@ abstract class abstractBusiness {
 		
 		return $retorno;
     }
+	
+	/** Reserva e retorna id do próximo elemento a ser inserido na tabela.
+	* @return Inteiro $id
+	*/
+	public function getNextid() {
+		return $this->dao->getNextid();
+	}
 	
 	public function commit($commit = true) {
 		if($commit) {

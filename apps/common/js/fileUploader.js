@@ -437,7 +437,7 @@ fileUploader.mostrarArquivosExistentes = function(campo){
 		nome_campo += '[' + posicao + ']';
 	}
 	$tr_arquivo.children("td.acoes").append(
-		$("<input />", {"type": "hidden", "name": nome_campo + "[acao]", "value": "nenhuma"})
+		$("<input />", {"type": "hidden", "name": nome_campo + "[acao]", "value": "nenhuma"}).addClass('acao')
 	);
 	fileUploader.mostrarTipoArquivo({name: nome_arquivo}, $campo, id_tr);
 	var callback_onfileprocess = function(upl, arquivo_tr){
@@ -587,6 +587,7 @@ fileUploader.enviarArquivo = function(arquivo, campo, id_tr){
 	var $campo = $(campo);
 	var id = $campo.attr('id');
 	var nome_campo = upl.campos[id]['nome_campo'];
+	var nome_campo_upload = nome_campo.replace(/[\[\]']/g, '_');
 	var $conteiner = $campo.closest("div.fileuploader");
 	var tamanhoLimite = ($campo.is("[data-tamanho-limite]")) ? (parseInt($campo.attr("data-tamanho-limite"), 10)) : (0);
 	var callback_onfileremove = function(upl, arquivo_tr){
@@ -679,11 +680,11 @@ fileUploader.enviarArquivo = function(arquivo, campo, id_tr){
 					}
 
 					$tr_arquivo.children("td.acoes").append(
-						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[acao]", "value": "cadastrar"})
+						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[acao]", "value": "cadastrar"}).addClass('acao')
 					).append(
-						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[name]", "value": nome_servidor})
+						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[name]", "value": nome_servidor}).addClass('name')
 					).append(
-						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[tmp_name]", "value": caminho_servidor})
+						$("<input />", {"type": "hidden", "name": nome_campo_formatado + "[tmp_name]", "value": caminho_servidor}).addClass('tmp_name')
 					)
 					fileUploader.atualizarBarraProgresso($barraProgresso, 100);
 					fileUploader.desativarAnimacaoBarraProgresso($barraProgresso);
@@ -723,8 +724,8 @@ fileUploader.enviarArquivo = function(arquivo, campo, id_tr){
 		}
 		xhr.open("POST", "upload_arquivo.php", true);
 		var formData = new FormData();
-		formData.append(nome_campo, arquivo);
-		formData.append("name", nome_campo);
+		formData.append(nome_campo_upload, arquivo);
+		formData.append("name", nome_campo_upload);
 		formData.append("tamanho_limite", tamanhoLimite);
 		xhr.send(formData);
 	} else {
@@ -749,7 +750,7 @@ fileUploader.enviarArquivo = function(arquivo, campo, id_tr){
 			"encoding": "multipart/form-data",
 			"target": iframe.attr("name")
 		}).append(
-			$("<input />", {"type": "hidden", "name": "name", "value": nome_campo})
+			$("<input />", {"type": "hidden", "name": "name", "value": nome_campo_upload})
 		).append(
 			$("<input />", {"type": "hidden", "name": "tamanho_limite", "value": tamanhoLimite})
 		);

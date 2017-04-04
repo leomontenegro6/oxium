@@ -51,17 +51,26 @@ colorpicker.instanciar = function(seletor_campo, escopo){
 		}
 		$campo.attr('maxlength', maxlength);
 		
-		// Definindo cor padrão para #444, caso nenhuma tenha sido fornecida
-		if($campo.val() == ''){
-			cor_padrao = '#444444';
+		// Definindo formato de cores em função do atributo "data-formato".
+		// Se não especificado, usar como padrão "hex".
+		if($campo.is('[data-cor-padrao]')){
+			cor_padrao = $campo.attr('data-cor-padrao');
+		} else {
+			// Definindo cor padrão para #444, caso nenhuma tenha sido fornecida
+			if($campo.val() == ''){
+				cor_padrao = '#444444';
+			}
 		}
 		
 		// Parâmetros de instanciação do campo select
 		var parametros = {
 			// Definindo formato de cores padrão
-			'format': formato,
-			// Definindo cor padrão
-			'color': cor_padrao
+			'format': formato
+		}
+		
+		// Definindo cor padrão
+		if(cor_padrao != ''){
+			parametros.color = cor_padrao;
 		}
 		
 		// Formatando campo

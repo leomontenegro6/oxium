@@ -331,6 +331,27 @@ class database {
 		
 		return PDO::PARAM_INT;
 	}
+	
+	public function getAutoincrement($dbname, $tabela){
+		$this->connect();
+		try {
+			$query = $this->pdo->query("SELECT AUTO_INCREMENT AS id
+				FROM INFORMATION_SCHEMA.TABLES
+				WHERE TABLE_SCHEMA = '$dbname' AND TABLE_NAME = '$tabela'");
+			$this->disconnect();
+			$rs = $query->fetchAll();
+			if (count($rs) == 0) {
+				return FALSE;
+			}
+			else {
+				return $rs[0]['id'];
+			}
+		} catch (PDOException $e) {
+			$this->trataException($e);
+			$this->disconnect();
+			return false;
+		}
+    }
 
 	public function set($parametro, $tabela) {
 		$this->connect();
